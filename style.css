@@ -8,12 +8,12 @@
 
 .station_card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr .5fr;
+    grid-template-columns: 2fr 2fr 2fr 0.5fr;
     justify-content: center;
     align-items: center;
 }
 
-.station_card > button {
+.btn_add, .btn_remove {
     width: 3em;
     height: 3em;
     border-radius: 50%;
@@ -24,7 +24,11 @@
     background-color: #c7c7c7;
 }
 
-.station_card > button:hover {
+.btn_add:hover {
     background-color: #04d400;
+    cursor: pointer;
+}
+.btn_remove:hover {
+    background-color: #d40000;
     cursor: pointer;
 }

@@ -9,8 +9,8 @@ fetchStations((error, stations) => {
     if (error) { console.log(error); }
 
     else {
-        const all_stations = document.getElementById('all_stations');
-        const favorite_stations = document.getElementById('favorites');
+        const all_stations = 'all_stations';
+        const favorite_stations = 'favorites';
 
         let stationArray = [];
         for (let i = 0; i < stations['results'].length; i++) {
@@ -28,7 +28,7 @@ fetchStations((error, stations) => {
             if (stations_in_session.includes(stationArray[j]['key'])) {
                 station_name = stationArray[j]['name'];
                 station_bensin = stationArray[j]['bensin95'];
-                station_diesel = stationArray[j]['disel'];
+                station_diesel = stationArray[j]['diesel'];
                 generateStationCard(favorite_stations, station_key, station_name, station_bensin, station_diesel);
             }
         }
@@ -45,7 +45,14 @@ function generateStationCard(where, station_id, station_name, station_bensin, st
     let card_diesel = document.createElement('p');
 
     let card_fav_button = document.createElement('button');
-    card_fav_button.innerHTML = '+';
+    if (where == 'all_stations') {
+        card_fav_button.innerHTML = '+';
+        card_fav_button.classList.add('btn_add');
+    }
+    else {
+        card_fav_button.innerHTML = 'x';
+        card_fav_button.classList.add('btn_remove');
+    }
     card_fav_button.setAttribute('onclick', 'favoriteStation(this.id)');
     card_fav_button.setAttribute('id', station_id);
 
@@ -62,7 +69,7 @@ function generateStationCard(where, station_id, station_name, station_bensin, st
     newDiv.appendChild(card_diesel);
     newDiv.appendChild(card_fav_button);
 
-    where.appendChild(newDiv);
+    document.getElementById(where).appendChild(newDiv);
 };
 
 function favoriteStation(station_id) {
@@ -79,9 +86,9 @@ function favoriteStation(station_id) {
     }
 
     location.reload();
-    console.log(localStorage.getItem('fav_stations'));
 }
 
 function clearLocalStorage() {
     localStorage.clear();
+    location.reload();
 }
