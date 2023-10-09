@@ -78,6 +78,7 @@ function favoriteStation(station_id) {
         localStorage.setItem('fav_stations', JSON.stringify(newArray));
     }
 
+    location.reload();
     console.log(localStorage.getItem('fav_stations'));
 }
 
