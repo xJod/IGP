@@ -19,16 +19,16 @@
     border-radius: 50%;
     border: none;
 
-    font-weight: bold;
-
     background-color: #c7c7c7;
 }
 
 .btn_add:hover {
     background-color: #04d400;
     cursor: pointer;
+    font-weight: bold;
 }
 .btn_remove:hover {
     background-color: #d40000;
     cursor: pointer;
+    font-weight: bold;
 }
